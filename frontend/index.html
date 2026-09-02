@@ -1,1 +1,87 @@
-sfsdfsdfsdgfsdg
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Analizador de Documentos</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Analizador de Documentos</h1>
+        <p>Sube un documento para realizar el análisis</p>
+    </header>
+
+    <main>
+
+        <section class="upload-container">
+
+            <h2>Seleccionar documento</h2>
+
+            <p>
+                Selecciona el archivo que deseas analizar.
+            </p>
+
+            <input
+                type="file"
+                id="fileInput"
+                accept=".pdf,.docx,.txt"
+            >
+
+            <button id="analyzeButton">
+                Analizar documento
+            </button>
+
+            <p id="status"></p>
+
+        </section>
+
+
+        <section
+            id="resultContainer"
+            class="result-container hidden"
+        >
+
+            <h2>Resultado del análisis</h2>
+
+            <div class="result-box">
+
+                <p>
+                    <strong>Resultado:</strong>
+                    <span id="result"></span>
+                </p>
+
+                <p>
+                    <strong>Puntuación:</strong>
+                    <span id="score"></span>
+                </p>
+
+                <p>
+                    <strong>Observaciones:</strong>
+                </p>
+
+                <p id="observations"></p>
+
+            </div>
+
+            <button id="downloadButton">
+                Descargar resultado PDF
+            </button>
+
+        </section>
+
+    </main>
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
+```
