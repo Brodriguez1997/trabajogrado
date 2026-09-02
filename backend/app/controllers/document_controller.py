@@ -2,6 +2,7 @@ from fastapi import APIRouter, File, HTTPException, UploadFile
 
 from ..services.document_service import DocumentService
 
+
 router = APIRouter(
     prefix="/api/documents",
     tags=["Documents"]
@@ -11,18 +12,23 @@ document_service = DocumentService()
 
 
 @router.post("/upload")
-def upload_document(
-    file: UploadFile = File(...)
+def upload_documents(
+    files: list[UploadFile] = File(...)
 ):
     try:
-        document = document_service.save_document(file)
+        documents = document_service.save_documents(files)
 
         return {
-            "message": "Documento recibido y almacenado correctamente.",
-            "document_id": document.document_id,
-            "filename": document.original_filename,
-            "extension": document.extension,
-            "path": document.path
+            "message": "Documentos recibidos y almacenados correctamente.",
+            "documents": [
+                {
+                    "document_id": document.document_id,
+                    "filename": document.original_filename,
+                    "extension": document.extension,
+                    "path": document.path
+                }
+                for document in documents
+            ]
         }
 
     except ValueError as error:

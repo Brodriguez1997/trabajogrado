@@ -52,3 +52,16 @@ class DocumentService:
             extension=extension,
             path=str(file_path)
         )
+
+    def save_documents(
+        self,
+        files: list[UploadFile]
+    ) -> list[Document]:
+
+        documents = []
+
+        for file in files:
+            document = self.save_document(file)
+            documents.append(document)
+
+        return documents
